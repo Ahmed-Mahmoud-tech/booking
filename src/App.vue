@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <HotelsCom  />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HotelsCom from './components/HotelsCom.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HotelsCom
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body{
+  background-color: #181818;
+  color:white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin:1rem
 }
+
+ *{
+   margin: 0;
+   padding: 0;
+ }
+
+ img{
+  max-width: 100%;
+ }
 </style>
