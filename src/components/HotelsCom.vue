@@ -16,7 +16,7 @@
                 <p>{{ hotel.address }}</p>
                 <p><RatingCom :rating="hotel.rating" /> </p>
               </div>
-              <button class="booking" @click="bookHotel(hotel.id)">Reserve</button>
+              <button class="booking" @click="bookHotel(hotel.id)">Book</button>
             </div>
           </div>
         </div>
@@ -24,19 +24,30 @@
     </ul>
 
     <div v-if="showBookingForm" class="formCont">
-      <h2>Booking Details</h2>
-      <form @submit.prevent="submitBooking">
-        <label for="name">Name:</label>
-        <input type="text" id="name" v-model="bookingForm.name" required />
-        <br />
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="bookingForm.email" required />
-        <br />
-        <label for="phone">Phone:</label>
+      <div class="form">
+        <h3>Create Reservation</h3>
+       <form @submit.prevent="submitBooking">
+        <div class="inputWrapper">
+          
+          <label for="name">Name:</label>
+          <input type="text" id="name" v-model="bookingForm.name" required />
+        </div>
+        
+        
+        <div class="inputWrapper">
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="bookingForm.email" required />
+         </div>
+         <div class="inputWrapper">
+ 
+        
+         <label for="phone">Phone:</label>
         <input type="tel" id="phone" v-model="bookingForm.phone" required />
-        <br />
-        <button type="submit">Submit</button>
+        </div> 
+        <button type="submit" class="submit">Submit</button>
       </form>
+      </div>
     </div >
 
   <div v-if="bookingSuccess">
@@ -177,10 +188,11 @@ h2.name {
 .info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .booking{
-padding: 0 20px;
+padding: 10px 20px;
     border-radius: 0.7rem;
     font-weight: bold;
     font-size: 1rem;
@@ -188,6 +200,15 @@ padding: 0 20px;
     border: 1px solid gold;
     background: #292929;
     color: gold;
+    
+}
+
+
+.booking:hover{
+    border: 1px solid #fff;
+    color: #fff;
+    box-shadow: 0 0 5px 1px white;
+
 }
 
 
@@ -206,6 +227,65 @@ padding: 0 20px;
     align-items: center;
 }
 
+.submit {
+    padding: 0.8rem 1rem;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: 1px solid gold;
+    background: #292929;
+    color: gold;
+    margin-top: 1rem;
+}
+
+.form {
+    background: black;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+}
+
+
+.submit:hover{
+    border: 1px solid #fff;
+    color: #fff;
+    box-shadow: 0 0 5px 1px white;
+
+}
+
+
+ 
+.inputWrapper input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 0.7rem;
+    background: #292929;
+    color: #fff;
+}
+
+.inputWrapper label {
+    width: 100px;
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.inputWrapper {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+
+.form   h3 {
+    font-size: 1.5rem;
+    color: gold;
+    border-bottom: 1px solid;
+    padding: 15px 0;
+    margin-bottom: 2rem;
+}
+
+ 
 
 </style>
 
