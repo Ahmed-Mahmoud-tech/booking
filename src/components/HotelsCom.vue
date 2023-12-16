@@ -1,8 +1,10 @@
 <template>
  <div class="hotelsContainer">
- 
-    <ul>
-      <li v-for="hotel in hotels" :key="hotel.id">
+  <div class="header fade-in-down-header">
+    <HeaderCom />
+  </div>
+    <ul  class="fade-in-down">
+      <li v-for="hotel in hotels" :key="hotel.id" >
         <div class="cardCont">
           <div class="imgCont">
             <div class="imgOverlay">
@@ -22,6 +24,8 @@
         </div>
       </li>
     </ul>
+
+    <FooterCom />
 
     <div v-if="showBookingForm" class="formCont">
       <div class="form">
@@ -59,23 +63,35 @@
   <script>
 
 
+  import img1 from '../assets/1.jpg';  
+  import img2 from '../assets/2.jpg';  
+  import img3 from '../assets/3.jpg';  
+  import img4 from '../assets/4.jpg';  
+  import img5 from '../assets/5.jpg';  
+  import img6 from '../assets/6.jpg';  
+
+
   import RatingCom from '../components/RatingCom.vue'
+  import HeaderCom from '../components/HeaderCom.vue'
+  import FooterCom from '../components/FooterCom.vue'
   import {ref, reactive} from "vue";
 
   export default {
     name: 'App',
     components: {
-      RatingCom
+      RatingCom,
+      HeaderCom,
+      FooterCom
      },
     setup() {
       
     const hotels = ref([
-    { id: 1, name: "Hotel A", address: "123 Main St", rating: 4, img:"https://www.lovidhu.com/uploads/posts-seo/2021/05/polonnaruwa-vatadage-sri-lanka.jpg"},
-    {id: 2, name: "Hotel B", address: "456 Oak St", rating: 3 , img:"https://classiclanka.com/wp-content/uploads/2022/06/Galle.webp"},
-    {id: 3, name: "Hotel C", address: "789 Pine St", rating: 5 , img: "https://haleyblackall.com/wp-content/uploads/2020/12/things-to-do-in-Kandy-20.jpg" },
-    {id: 4, name: "Hotel D", address: "101 Elm St", rating: 2 , img: "https://www.lovidhu.com/uploads/posts-seo/2021/05/polonnaruwa-vatadage-sri-lanka.jpg" },
-    {id: 5, name: "Hotel E", address: "202 Maple St", rating: 3 , img: "https://www.jetwinghotels.com/jetwingviluyana/wp-content/uploads/sites/2/2017/09/dambulla-temple-1.jpg" },
-    {id: 6, name: "Hotel F", address: "303 Birch St", rating: 5 , img: "https://media-cdn.tripadvisor.com/media/photo-s/16/db/91/41/the-city-now-a-world.jpg" },
+    { id: 1, name: "Hotel A", address: "123 Main St", rating: 4, img:img1 },
+    {id: 2, name: "Hotel B", address: "456 Oak St", rating: 3 , img: img2 },
+    {id: 3, name: "Hotel C", address: "789 Pine St", rating: 5 , img: img3 },
+    {id: 4, name: "Hotel D", address: "101 Elm St", rating: 2 , img: img4 },
+    {id: 5, name: "Hotel E", address: "202 Maple St", rating: 3 , img: img5 },
+    {id: 6, name: "Hotel F", address: "303 Birch St", rating: 5 , img: img6 },
     ]);
 
     const reserved = ref([]);
@@ -123,6 +139,7 @@
       bookingSuccess,
       bookHotel,
       submitBooking,
+ 
     };
  },
 };
@@ -131,7 +148,7 @@
 <style>
 .hotelsContainer ul li {
     width: 30%;
-    margin: 0.5rem;
+    margin: 1rem;
     min-width: 300px;
     max-width: 90%;
     color: #fff;
@@ -150,6 +167,7 @@
     padding:1rem;
     border-radius: 0.7rem;
     border:1px solid #5a5a5a;
+    box-shadow: 0 0 10px 0px #818181;
 }
 .imgOverlay{
   margin-bottom:1rem;
@@ -170,7 +188,7 @@
   border-radius: 0.7rem;
 }
 .cardCont:hover .imgHolder{
-  transform: scale(1.3);
+  transform: scale(1.1);
   transition: 1s;
 }
 
@@ -181,7 +199,7 @@ h2.name {
     background: #08080880;
     right: 0;
     padding: 5px;
-    top: 2rem;
+    top: 1.5rem;
     color: gold;
 }
 
@@ -194,7 +212,7 @@ h2.name {
 .booking{
 padding: 10px 20px;
     border-radius: 0.7rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 1rem;
     cursor: pointer;
     border: 1px solid gold;
@@ -211,6 +229,27 @@ padding: 10px 20px;
 
 }
 
+.fade-in-down-header {
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInDown 0.5s 0s ease-out forwards;
+}
+.fade-in-down {
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInDown 1s 0.5s ease-out forwards;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
 
 /**************  form  *********** */
 
@@ -230,7 +269,7 @@ padding: 10px 20px;
 .submit {
     padding: 0.8rem 1rem;
     border-radius: 0.7rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 1.1rem;
     cursor: pointer;
     border: 1px solid gold;
@@ -268,7 +307,7 @@ padding: 10px 20px;
 .inputWrapper label {
     width: 100px;
     display: flex;
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-bottom: 10px;
 }
 .inputWrapper {
